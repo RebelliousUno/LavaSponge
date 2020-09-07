@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "all": "lavasponge:block/hot_lavasponge"
+  }
+}
