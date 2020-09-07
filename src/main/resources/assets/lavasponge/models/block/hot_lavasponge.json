@@ -1,6 +1,11 @@
 {
   "parent": "block/cube",
   "textures": {
-    "all": "lavasponge:block/hot_lavasponge"
+    "up": "lavasponge:block/hot_lavasponge",
+    "down": "lavasponge:block/hot_lavasponge",
+    "north": "lavasponge:block/hot_lavasponge",
+    "south": "lavasponge:block/hot_lavasponge",
+    "east": "lavasponge:block/hot_lavasponge",
+    "west": "lavasponge:block/hot_lavasponge"
   }
 }
