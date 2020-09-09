@@ -1,14 +1,16 @@
 package uno.rebellious.lavasponge.blocks;
 
 import net.minecraft.block.*;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import org.apache.logging.log4j.LogManager;
-import uno.rebellious.lavasponge.LavaSponge;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.stream.Stream;
 
 public class HotLavaSpongeBlock extends WetSpongeBlock {
@@ -36,4 +38,51 @@ public class HotLavaSpongeBlock extends WetSpongeBlock {
         return Arrays.stream(Direction.values())
                 .filter(direction -> worldIn.getBlockState(pos.offset(direction)).getBlock().getTags().contains(new ResourceLocation("minecraft:ice")));
     }
+
+    /**
+     * Called periodically clientside on blocks near the player to show effects (like furnace fire particles). Note that
+     * this method is unrelated to {@link randomTick} and {@link #needsRandomTick}, and will always be called regardless
+     * of whether the block can receive random update ticks
+     * Taken from WetSpongeBlock since it doesn't take a type of particle to drip..
+     */
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+        Direction direction = Direction.func_239631_a_(rand);
+        if (direction != Direction.UP) {
+            BlockPos blockpos = pos.offset(direction);
+            BlockState blockstate = worldIn.getBlockState(blockpos);
+            if (!stateIn.isSolid() || !blockstate.isSolidSide(worldIn, blockpos, direction.getOpposite())) {
+                double d0 = pos.getX();
+                double d1 = pos.getY();
+                double d2 = pos.getZ();
+                if (direction == Direction.DOWN) {
+                    d1 = d1 - 0.05D;
+                    d0 += rand.nextDouble();
+                    d2 += rand.nextDouble();
+                } else {
+                    d1 = d1 + rand.nextDouble() * 0.8D;
+                    if (direction.getAxis() == Direction.Axis.X) {
+                        d2 += rand.nextDouble();
+                        if (direction == Direction.EAST) {
+                            ++d0;
+                        } else {
+                            d0 += 0.05D;
+                        }
+                    } else {
+                        d0 += rand.nextDouble();
+                        if (direction == Direction.SOUTH) {
+                            ++d2;
+                        } else {
+                            d2 += 0.05D;
+                        }
+                    }
+                }
+
+                worldIn.addParticle(ParticleTypes.DRIPPING_LAVA, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            }
+        }
+    }
+
+
 }

@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "lavasponge:block/lavasponge" }
+    "": {
+      "model": "lavasponge:block/lavasponge"
+    }
   }
 }

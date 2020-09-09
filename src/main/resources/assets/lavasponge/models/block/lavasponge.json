@@ -6,6 +6,7 @@
     "north": "lavasponge:block/lavasponge",
     "south": "lavasponge:block/lavasponge",
     "east": "lavasponge:block/lavasponge",
-    "west": "lavasponge:block/lavasponge"
+    "west": "lavasponge:block/lavasponge",
+    "particle": "lavasponge:block/lavasponge"
   }
 }
