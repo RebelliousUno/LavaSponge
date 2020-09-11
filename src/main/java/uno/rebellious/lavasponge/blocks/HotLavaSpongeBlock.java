@@ -28,9 +28,7 @@ public class HotLavaSpongeBlock extends WetSpongeBlock {
             worldIn.setBlockState(pos, BlockRegister.LAVA_SPONGE.get().getDefaultState(), 3);
             worldIn.playEvent(2001, pos, Block.getStateId(Blocks.ICE.getDefaultState()));
             iceDirectionStreamProvider(worldIn, pos)
-                    .forEach(direction -> {
-                        worldIn.setBlockState(pos.offset(direction), Blocks.WATER.getDefaultState(), 3);
-                    });
+                    .forEach(direction -> worldIn.setBlockState(pos.offset(direction), Blocks.WATER.getDefaultState(), 3));
         }
     }
 

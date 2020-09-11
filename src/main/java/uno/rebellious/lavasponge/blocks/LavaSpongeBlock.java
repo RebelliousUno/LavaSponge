@@ -2,7 +2,6 @@ package uno.rebellious.lavasponge.blocks;
 
 import com.google.common.collect.Lists;
 import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.tags.FluidTags;
@@ -41,7 +40,6 @@ public class LavaSpongeBlock extends SpongeBlock {
                 BlockPos blockPos1 = blockPos.offset(direction);
                 BlockState blockState = worldIn.getBlockState(blockPos1);
                 FluidState fluidState = worldIn.getFluidState(blockPos1);
-                Material material = blockState.getMaterial();
                 if (fluidState.isTagged(FluidTags.LAVA)) {
                     if (blockState.getBlock() instanceof IBucketPickupHandler && ((IBucketPickupHandler) blockState.getBlock()).pickupFluid(worldIn, blockPos1, blockState) != Fluids.EMPTY) {
                         ++i;
