@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.stream.Stream;
 
 public class HotLavaSpongeBlock extends WetSpongeBlock {
-    public HotLavaSpongeBlock(AbstractBlock.Properties properties) {
+    public HotLavaSpongeBlock(Block.Properties properties) {
         super(properties);
     }
 
@@ -44,7 +44,7 @@ public class HotLavaSpongeBlock extends WetSpongeBlock {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        Direction direction = Direction.func_239631_a_(rand);
+        Direction direction = Direction.random(rand);
         if (direction != Direction.UP) {
             BlockPos blockpos = pos.offset(direction);
             BlockState blockstate = worldIn.getBlockState(blockpos);

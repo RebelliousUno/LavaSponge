@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.fluid.IFluidState;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Tuple;
@@ -15,7 +16,7 @@ import java.util.Queue;
 
 public class LavaSpongeBlock extends SpongeBlock {
 
-    public LavaSpongeBlock(AbstractBlock.Properties properties) {
+    public LavaSpongeBlock(Block.Properties properties) {
         super(properties);
     }
 
@@ -39,7 +40,7 @@ public class LavaSpongeBlock extends SpongeBlock {
             for (Direction direction : Direction.values()) {
                 BlockPos blockPos1 = blockPos.offset(direction);
                 BlockState blockState = worldIn.getBlockState(blockPos1);
-                FluidState fluidState = worldIn.getFluidState(blockPos1);
+                IFluidState fluidState = worldIn.getFluidState(blockPos1);
                 if (fluidState.isTagged(FluidTags.LAVA)) {
                     if (blockState.getBlock() instanceof IBucketPickupHandler && ((IBucketPickupHandler) blockState.getBlock()).pickupFluid(worldIn, blockPos1, blockState) != Fluids.EMPTY) {
                         ++i;
