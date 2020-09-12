@@ -22,8 +22,6 @@ public class HotLavaSpongeBlock extends WetSpongeBlock {
     public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
         long count = iceDirectionStreamProvider(worldIn, pos)
                 .count();
-
-
         if (count >= 5) {
             worldIn.setBlockState(pos, BlockRegister.LAVA_SPONGE.get().getDefaultState(), 3);
             worldIn.playEvent(2001, pos, Block.getStateId(Blocks.ICE.getDefaultState()));
@@ -76,7 +74,6 @@ public class HotLavaSpongeBlock extends WetSpongeBlock {
                         }
                     }
                 }
-
                 worldIn.addParticle(ParticleTypes.DRIPPING_LAVA, d0, d1, d2, 0.0D, 0.0D, 0.0D);
             }
         }

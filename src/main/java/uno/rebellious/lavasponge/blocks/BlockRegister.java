@@ -30,8 +30,6 @@ public class BlockRegister {
 
 
     public static void registerBlocks() {
-
-
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
