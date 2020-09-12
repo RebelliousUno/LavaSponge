@@ -2,7 +2,7 @@ language: java
 install: gradle clean
 jobs:
   include:
-    - stage: setup
-      script: gradle setupCiWorkspace
+    - stage: clean
+      script: gradle clean
     - stage: build
       script: gradle build
