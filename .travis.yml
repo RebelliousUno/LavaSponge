@@ -2,7 +2,5 @@ language: java
 install: gradle clean
 jobs:
   include:
-    - stage: clean
-      script: gradle clean
     - stage: build
-      script: gradle build
+      script: ./gradle clean build
