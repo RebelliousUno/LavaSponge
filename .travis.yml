@@ -4,4 +4,4 @@ jdk:
 jobs:
   include:
     - stage: build
-      script: ./gradlew clean build
+      script: gradle clean build
