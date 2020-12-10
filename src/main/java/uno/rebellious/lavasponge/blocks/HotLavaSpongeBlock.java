@@ -25,8 +25,11 @@ public class HotLavaSpongeBlock extends WetSpongeBlock {
         if (count >= 5) {
             worldIn.setBlockState(pos, BlockRegister.LAVA_SPONGE.get().getDefaultState(), 3);
             worldIn.playEvent(2001, pos, Block.getStateId(Blocks.ICE.getDefaultState()));
+
+            BlockState blockToReplace = worldIn.getDimension().doesWaterVaporize() ? Blocks.AIR.getDefaultState() : Blocks.WATER.getDefaultState();
+
             iceDirectionStreamProvider(worldIn, pos)
-                    .forEach(direction -> worldIn.setBlockState(pos.offset(direction), Blocks.WATER.getDefaultState(), 3));
+                    .forEach(direction -> worldIn.setBlockState(pos.offset(direction), blockToReplace, 3));
         }
     }
 
@@ -78,6 +81,4 @@ public class HotLavaSpongeBlock extends WetSpongeBlock {
             }
         }
     }
-
-
 }
