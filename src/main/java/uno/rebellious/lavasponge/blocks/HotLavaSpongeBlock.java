@@ -1,6 +1,9 @@
 package uno.rebellious.lavasponge.blocks;
 
-import net.minecraft.block.*;
+import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
@@ -13,13 +16,22 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Stream;
 
-public class HotLavaSpongeBlock extends WetSpongeBlock {
+public class HotLavaSpongeBlock extends Block {
     public HotLavaSpongeBlock(AbstractBlock.Properties properties) {
         super(properties);
     }
 
-    @Override
     public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
+        doCoolDownCheck(worldIn, pos);
+    }
+
+    @Override
+    public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
+        super.neighborChanged(state, worldIn, pos, blockIn, fromPos, isMoving);
+        doCoolDownCheck(worldIn, pos);
+    }
+
+    private void doCoolDownCheck(World worldIn, BlockPos pos) {
         long count = iceDirectionStreamProvider(worldIn, pos)
                 .count();
         if (count >= 5) {
