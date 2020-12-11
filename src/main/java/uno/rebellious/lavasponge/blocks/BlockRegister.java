@@ -17,10 +17,10 @@ import uno.rebellious.lavasponge.config.Config;
 public class BlockRegister {
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LavaSponge.MODID);
     public static final RegistryObject<LavaSpongeBlock> LAVA_SPONGE = BLOCKS.register("lavasponge", () -> new LavaSpongeBlock(AbstractBlock.Properties.create(Material.SPONGE).hardnessAndResistance(0.6F).sound(SoundType.METAL)));
-    public static final RegistryObject<HotLavaSpongeBlock> HOT_LAVA_SPONGE = BLOCKS.register("hot_lavasponge", () -> new HotLavaSpongeBlock(AbstractBlock.Properties.create(Material.SPONGE).hardnessAndResistance(0.6F).sound(SoundType.METAL).setLightLevel((lightValue) -> 14)));
+    public static final RegistryObject<HotLavaSpongeBlock> HOT_LAVA_SPONGE = BLOCKS.register("hot_lavasponge", () -> new HotLavaSpongeBlock(AbstractBlock.Properties.create(Material.SPONGE).hardnessAndResistance(0.6F).sound(SoundType.METAL).func_235838_a_((lightValue) -> 14)));
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LavaSponge.MODID);
     public static final RegistryObject<Item> LAVA_SPONGE_ITEM = ITEMS.register("lavasponge", () -> new BlockItem(LAVA_SPONGE.get(), new Item.Properties().group(Config.ITEM_GROUP)));
-    public static final RegistryObject<Item> HOT_LAVA_SPONGE_ITEM = ITEMS.register("hot_lavasponge", () -> new BlockItem(HOT_LAVA_SPONGE.get(), new Item.Properties().group(Config.ITEM_GROUP).isImmuneToFire().maxStackSize(1).containerItem(LAVA_SPONGE_ITEM.get())) {
+    public static final RegistryObject<Item> HOT_LAVA_SPONGE_ITEM = ITEMS.register("hot_lavasponge", () -> new BlockItem(HOT_LAVA_SPONGE.get(), new Item.Properties().group(Config.ITEM_GROUP).func_234689_a_().maxStackSize(1).containerItem(LAVA_SPONGE_ITEM.get())) {
         @Override
         public int getBurnTime(ItemStack itemStack) {
             return 16000;
