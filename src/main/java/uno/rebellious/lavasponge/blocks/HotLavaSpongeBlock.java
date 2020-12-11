@@ -38,7 +38,7 @@ public class HotLavaSpongeBlock extends Block {
             worldIn.setBlockState(pos, BlockRegister.LAVA_SPONGE.get().getDefaultState(), 3);
             worldIn.playEvent(2001, pos, Block.getStateId(Blocks.ICE.getDefaultState()));
 
-            BlockState blockToReplace = worldIn.getDimensionType().isUltrawarm() ? Blocks.AIR.getDefaultState() : Blocks.WATER.getDefaultState();
+            BlockState blockToReplace = worldIn.func_230315_m_().func_236040_e_() ? Blocks.AIR.getDefaultState() : Blocks.WATER.getDefaultState();
 
             iceDirectionStreamProvider(worldIn, pos)
                     .forEach(direction -> worldIn.setBlockState(pos.offset(direction), blockToReplace, 3));
@@ -59,7 +59,7 @@ public class HotLavaSpongeBlock extends Block {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        Direction direction = Direction.getRandomDirection(rand);
+        Direction direction = Direction.func_239631_a_(rand);
         if (direction != Direction.UP) {
             BlockPos blockpos = pos.offset(direction);
             BlockState blockstate = worldIn.getBlockState(blockpos);
