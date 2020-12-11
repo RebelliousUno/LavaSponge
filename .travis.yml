@@ -10,5 +10,3 @@ addons:
   artifacts:
     paths:
       - $TRAVIS_BUILD_DIR/build/libs
-    target_paths:
-      - /${TRAVIS_REPO_SLUG}/${TRAVIS_BRANCH}/
