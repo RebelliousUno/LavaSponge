@@ -1,0 +1,15 @@
+language: java
+jdk:
+  - openjdk8
+jobs:
+  include:
+    - stage: build
+      script: ./gradlew clean build
+
+addons:
+  artifacts:
+    working_dir: build/libs
+    paths:
+      - $(ls build/libs/*.jar | tr "\n" ":")
+    target_paths:
+      - ${TRAVIS_BRANCH}
