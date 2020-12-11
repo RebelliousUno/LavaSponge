@@ -7,5 +7,5 @@ jobs:
       script: ./gradlew clean build
 
 addons:
-  artifacts: true
+  artifacts:
     working_dir: /${TRAVIS_REPO_SLUG}/${TRAVIS_BUILD_NUMBER}/${TRAVIS_JOB_NUMBER}/build/libs
