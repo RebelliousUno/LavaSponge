@@ -8,5 +8,5 @@ jobs:
 
 addons:
   artifacts:
-    target_paths:
+    paths:
       - /${TRAVIS_REPO_SLUG}/${TRAVIS_BUILD_NUMBER}/${TRAVIS_JOB_NUMBER}/build/libs
