@@ -11,3 +11,5 @@ addons:
     working_dir: build/libs
     paths:
       - $(ls build/libs/*.jar | tr "\n" ":")
+    target_paths:
+      - ${TRAVIS_BRANCH_NAME}
