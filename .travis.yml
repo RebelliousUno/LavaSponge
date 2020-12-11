@@ -5,3 +5,6 @@ jobs:
   include:
     - stage: build
       script: ./gradlew clean build
+
+addons:
+  artifacts: true
