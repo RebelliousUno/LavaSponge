@@ -8,3 +8,4 @@ jobs:
 
 addons:
   artifacts: true
+    working_dir: /${TRAVIS_REPO_SLUG}/${TRAVIS_BUILD_NUMBER}/${TRAVIS_JOB_NUMBER}/build/libs
