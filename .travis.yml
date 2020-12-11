@@ -12,4 +12,4 @@ addons:
     paths:
       - $(ls build/libs/*.jar | tr "\n" ":")
     target_paths:
-      - ${TRAVIS_BRANCH_NAME}
+      - ${TRAVIS_BRANCH}
