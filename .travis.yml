@@ -9,4 +9,4 @@ jobs:
 addons:
   artifacts:
     paths:
-      - /${TRAVIS_REPO_SLUG}/${TRAVIS_BUILD_NUMBER}/${TRAVIS_JOB_NUMBER}/build/libs
+      - $TRAVIS_BUILD_DIR/build/libs
