@@ -8,5 +8,5 @@ jobs:
 
 addons:
   artifacts:
-    paths:
-      - $TRAVIS_BUILD_DIR/build/libs
+    working_dir: $TRAVIS_BUILD_DIR/build/libs
+
