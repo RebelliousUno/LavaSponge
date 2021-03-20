@@ -20,10 +20,10 @@ public class LavaSpongeBlock extends SpongeBlock {
     }
 
     @Override
-    protected void tryAbsorb(World worldIn, BlockPos pos) {
+    protected void tryAbsorbWater(World worldIn, BlockPos pos) {
         if (this.absorb(worldIn, pos)) {
-            worldIn.setBlockState(pos, BlockRegister.HOT_LAVA_SPONGE.get().getDefaultState(), 2);
-            worldIn.playEvent(2001, pos, Block.getStateId(Blocks.LAVA.getDefaultState()));
+            worldIn.setBlock(pos, BlockRegister.HOT_LAVA_SPONGE.get().defaultBlockState(), 2);
+            worldIn.levelEvent(2001, pos, Block.getId(Blocks.LAVA.defaultBlockState()));
         }
     }
 
@@ -37,17 +37,17 @@ public class LavaSpongeBlock extends SpongeBlock {
             BlockPos blockPos = tuple.getA();
             int j = tuple.getB();
             for (Direction direction : Direction.values()) {
-                BlockPos blockPos1 = blockPos.offset(direction);
+                BlockPos blockPos1 = blockPos.relative(direction);
                 BlockState blockState = worldIn.getBlockState(blockPos1);
                 FluidState fluidState = worldIn.getFluidState(blockPos1);
-                if (fluidState.isTagged(FluidTags.LAVA)) {
-                    if (blockState.getBlock() instanceof IBucketPickupHandler && ((IBucketPickupHandler) blockState.getBlock()).pickupFluid(worldIn, blockPos1, blockState) != Fluids.EMPTY) {
+                if (fluidState.is(FluidTags.LAVA)) {
+                    if (blockState.getBlock() instanceof IBucketPickupHandler && ((IBucketPickupHandler) blockState.getBlock()).takeLiquid(worldIn, blockPos1, blockState) != Fluids.EMPTY) {
                         ++i;
                         if (j < 6) {
                             queue.add(new Tuple<>(blockPos1, j + 1));
                         }
                     } else if (blockState.getBlock() instanceof FlowingFluidBlock) {
-                        worldIn.setBlockState(blockPos1, Blocks.AIR.getDefaultState(), 3);
+                        worldIn.setBlock(blockPos1, Blocks.AIR.defaultBlockState(), 3);
                         ++i;
                         if (j < 6) {
                             queue.add(new Tuple<>(blockPos1, j + 1));

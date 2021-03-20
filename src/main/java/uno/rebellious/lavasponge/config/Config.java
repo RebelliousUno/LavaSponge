@@ -9,7 +9,7 @@ public class Config {
 
     public static final ItemGroup ITEM_GROUP = new ItemGroup("lavasponge") {
         @Override
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
             return new ItemStack(BlockRegister.LAVA_SPONGE.get());
         }
     };
