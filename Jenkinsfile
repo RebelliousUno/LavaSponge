@@ -3,9 +3,7 @@ pipeline {
     triggers {
         cron 'H * * * *'
     }
-
     stages {
-
         stage('clean') {
             steps {
                 echo 'cleaning'
@@ -21,11 +19,11 @@ pipeline {
                     bat 'gradlew.bat build'
                 }
             }
-        }
-        stage ('deploy') {
-            steps {
-                echo 'deploying'
-            }
+        }       
+    }
+    post {
+        always{
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
         }
     }
 }
