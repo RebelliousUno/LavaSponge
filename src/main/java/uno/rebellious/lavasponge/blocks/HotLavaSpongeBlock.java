@@ -1,14 +1,13 @@
 package uno.rebellious.lavasponge.blocks;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -17,23 +16,23 @@ import java.util.Random;
 import java.util.stream.Stream;
 
 public class HotLavaSpongeBlock extends Block {
-    public HotLavaSpongeBlock(AbstractBlock.Properties properties) {
+    public HotLavaSpongeBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    public void onPlace(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
+    public void onPlace(BlockState state, Level worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
         super.onPlace(state, worldIn, pos, oldState, isMoving);
         doCoolDownCheck(worldIn, pos);
     }
 
     @Override
-    public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
+    public void neighborChanged(BlockState state, Level worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
         super.neighborChanged(state, worldIn, pos, blockIn, fromPos, isMoving);
         doCoolDownCheck(worldIn, pos);
     }
 
-    private void doCoolDownCheck(World worldIn, BlockPos pos) {
+    private void doCoolDownCheck(Level worldIn, BlockPos pos) {
         long count = iceDirectionStreamProvider(worldIn, pos)
                 .count();
         if (count >= 5) {
@@ -47,7 +46,7 @@ public class HotLavaSpongeBlock extends Block {
         }
     }
 
-    private Stream<Direction> iceDirectionStreamProvider(World worldIn, BlockPos pos) {
+    private Stream<Direction> iceDirectionStreamProvider(Level worldIn, BlockPos pos) {
         return Arrays.stream(Direction.values())
                 .filter(direction -> worldIn.getBlockState(pos.relative(direction)).getBlock().getTags().contains(new ResourceLocation("minecraft:ice")));
     }
@@ -60,7 +59,7 @@ public class HotLavaSpongeBlock extends Block {
      */
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
         Direction direction = Direction.getRandom(rand);
         if (direction == Direction.UP) return;
 
