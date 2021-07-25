@@ -31,12 +31,13 @@ public class BlockRegister {
                 return 16000;
             }
             return -1;
-        }});
-
-
-        public static void registerBlocks() {
-            BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-            ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-
         }
+    });
+
+
+    public static void registerBlocks() {
+        BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
     }
+}
