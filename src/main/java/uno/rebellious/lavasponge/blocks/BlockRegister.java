@@ -24,7 +24,6 @@ public class BlockRegister {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LavaSponge.MODID);
     public static final RegistryObject<Item> LAVA_SPONGE_ITEM = ITEMS.register("lavasponge", () -> new BlockItem(LAVA_SPONGE.get(), new Item.Properties().tab(Config.ITEM_GROUP)));
     public static final RegistryObject<Item> HOT_LAVA_SPONGE_ITEM = ITEMS.register("hot_lavasponge", () -> new BlockItem(HOT_LAVA_SPONGE.get(), new Item.Properties().tab(Config.ITEM_GROUP).fireResistant().stacksTo(1).craftRemainder(LAVA_SPONGE_ITEM.get())) {
-
         @Override
         public int getBurnTime(ItemStack stack, RecipeType recipeType) {
             if (List.of(RecipeType.SMELTING, RecipeType.BLASTING, RecipeType.SMOKING).contains(recipeType)) {
@@ -38,6 +37,5 @@ public class BlockRegister {
     public static void registerBlocks() {
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-
     }
 }
