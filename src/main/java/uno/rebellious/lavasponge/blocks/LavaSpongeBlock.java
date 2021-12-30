@@ -41,7 +41,7 @@ public class LavaSpongeBlock extends SpongeBlock {
                 BlockState blockState = worldIn.getBlockState(blockPos1);
                 FluidState fluidState = worldIn.getFluidState(blockPos1);
                 if (fluidState.is(FluidTags.LAVA)) {
-                    if (blockState.getBlock() instanceof BucketPickup && ((BucketPickup) blockState.getBlock()).pickupBlock(worldIn, blockPos1, blockState).isEmpty()) {
+                    if (blockState.getBlock() instanceof BucketPickup && !((BucketPickup) blockState.getBlock()).pickupBlock(worldIn, blockPos1, blockState).isEmpty()) {
                         ++i;
                         if (j < 6) {
                             queue.add(new Tuple<>(blockPos1, j + 1));
