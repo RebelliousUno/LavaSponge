@@ -6,6 +6,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -60,7 +61,7 @@ public class HotLavaSpongeBlock extends Block {
 
     private Stream<Direction> iceDirectionStreamProvider(Level worldIn, BlockPos pos) {
         return Arrays.stream(Direction.values())
-                .filter(direction -> worldIn.getBlockState(pos.relative(direction)).getBlock().getTags().contains(new ResourceLocation("minecraft:ice")));
+                .filter(direction -> worldIn.getBlockState(pos.relative(direction)).is(BlockTags.ICE));
     }
 
     /**
