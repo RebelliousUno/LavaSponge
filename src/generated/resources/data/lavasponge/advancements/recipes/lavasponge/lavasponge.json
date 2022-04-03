@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "lavasponge:lavasponge"
+    ]
+  },
+  "criteria": {
+    "lavasponge": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:lava_bucket"
+            ]
+          },
+          {
+            "items": [
+              "minecraft:sponge"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "lavasponge:lavasponge"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "lavasponge",
+      "has_the_recipe"
+    ]
+  ]
+}

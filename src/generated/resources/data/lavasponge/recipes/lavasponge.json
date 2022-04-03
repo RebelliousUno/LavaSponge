@@ -1,16 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "lavasponge",
   "pattern": [
     " X ",
-    "X#X",
+    "XSX",
     " X "
   ],
   "key": {
-    "#": {
-      "item": "minecraft:sponge"
-    },
     "X": {
       "item": "minecraft:lava_bucket"
+    },
+    "S": {
+      "item": "minecraft:sponge"
     }
   },
   "result": {
