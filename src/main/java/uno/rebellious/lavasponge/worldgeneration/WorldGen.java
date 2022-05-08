@@ -17,6 +17,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTes
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import uno.rebellious.lavasponge.blocks.BlockRegister;
+import uno.rebellious.lavasponge.config.LavaSpongeConfig;
 
 import static net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate.anyOf;
 import static net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate.matchesFluid;
@@ -24,8 +25,8 @@ import static net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate.
 public class WorldGen {
 
     public static Holder<PlacedFeature> LAVA_SPONGE_GEN;
-    public static final int NETHER_VEINSIZE = 1;
-    public static final int NETHER_AMOUNT = 100;
+    public static final int NETHER_VEINSIZE = LavaSpongeConfig.VEIN_SIZE.get();
+    public static final int NETHER_AMOUNT = LavaSpongeConfig.NETHER_AMOUNT.get();
 
 
     public static void registerConfiguredFeatures() {
@@ -54,7 +55,7 @@ public class WorldGen {
 
 
     public static void onBiomeLoadingEvent(BiomeLoadingEvent event) {
-        if (event.getCategory() == Biome.BiomeCategory.NETHER) {
+        if (LavaSpongeConfig.WORLD_GEN.get() && event.getCategory() == Biome.BiomeCategory.NETHER) {
             event.getGeneration().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, LAVA_SPONGE_GEN);
         }
     }
