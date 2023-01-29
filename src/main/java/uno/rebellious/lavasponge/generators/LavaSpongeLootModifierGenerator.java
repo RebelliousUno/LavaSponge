@@ -23,12 +23,12 @@ public class LavaSpongeLootModifierGenerator extends GlobalLootModifierProvider 
         this.add("piglin_modifier", new LavaSpongeLootModifier(
                 new LootItemCondition[]{
                         LootTableIdCondition.builder(EntityType.PIGLIN.getDefaultLootTable()).build()
-                }, 0.25
+                }, 0.05
         ));
         this.add("zombie_piglin_modifier", new LavaSpongeLootModifier(
                 new LootItemCondition[]{
                         LootTableIdCondition.builder(EntityType.ZOMBIFIED_PIGLIN.getDefaultLootTable()).build()
-                }, 0.25
+                }, 0.05
         ));
     }
 }
