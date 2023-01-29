@@ -1,7 +1,7 @@
 buildscript {
     ext.modVersion = '1.1.7'
-    ext.minecraftVersion = '1.19.2'
-    ext.forgeVersion = '43.2.0'
+    ext.minecraftVersion = '1.19.3'
+    ext.forgeVersion = '44.1.0'
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
         mavenCentral()
