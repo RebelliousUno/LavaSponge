@@ -1,0 +1,10 @@
+{
+  "type": "lavasponge:lava_sponge_loot_mod",
+  "chance": 0.25,
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/zombified_piglin"
+    }
+  ]
+}

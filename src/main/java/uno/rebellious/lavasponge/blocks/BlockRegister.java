@@ -1,5 +1,8 @@
 package uno.rebellious.lavasponge.blocks;
 
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -8,14 +11,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import uno.rebellious.lavasponge.LavaSponge;
 import uno.rebellious.lavasponge.config.Config;
-import uno.rebellious.lavasponge.generators.LavaSpongeChestModifier;
+
 
 public class BlockRegister {
 
@@ -33,12 +35,13 @@ public class BlockRegister {
         }
     });
 
+    public static final TagKey<Item> ICE_ITEM_TAG = ItemTags.create(new ResourceLocation(LavaSponge.MODID, "lavaspongecooler"));
+
 
     public static void registerBlocks() {
         var bus = FMLJavaModLoadingContext.get().getModEventBus();
         BLOCKS.register(bus);
         ITEMS.register(bus);
-        //LOOT.register("lavasponge_loot", LavaSpongeChestModifier.Serializer::new);
     }
 
 

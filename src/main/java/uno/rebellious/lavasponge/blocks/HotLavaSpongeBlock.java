@@ -1,12 +1,12 @@
 package uno.rebellious.lavasponge.blocks;
 
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
+
 public class HotLavaSpongeBlock extends Block {
     public HotLavaSpongeBlock(Properties properties) {
         super(properties);
@@ -30,7 +31,7 @@ public class HotLavaSpongeBlock extends Block {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter blockGetter, List<Component> list, TooltipFlag tooltipFlag) {
-        list.add(new TranslatableComponent("block.lavasponge.hot_lavasponge.description"));
+        list.add(Component.translatable("block.lavasponge.hot_lavasponge.description"));
     }
 
     @Override
@@ -72,7 +73,7 @@ public class HotLavaSpongeBlock extends Block {
      */
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
+    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
         Direction direction = Direction.getRandom(rand);
         if (direction == Direction.UP) return;
 

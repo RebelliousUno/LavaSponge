@@ -3,16 +3,16 @@
   "group": "lavasponge",
   "key": {
     "S": {
-      "item": "minecraft:sponge"
+      "item": "lavasponge:hot_lavasponge"
     },
     "X": {
-      "item": "minecraft:lava_bucket"
+      "tag": "lavasponge:lavaspongecooler"
     }
   },
   "pattern": [
-    " X ",
+    "XXX",
     "XSX",
-    " X "
+    "XXX"
   ],
   "result": {
     "item": "lavasponge:lavasponge"

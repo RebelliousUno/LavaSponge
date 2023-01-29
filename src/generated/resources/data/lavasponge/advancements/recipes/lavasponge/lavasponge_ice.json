@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "lavasponge:lavasponge"
+        "recipe": "lavasponge:lavasponge_ice"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -12,12 +12,7 @@
         "items": [
           {
             "items": [
-              "minecraft:lava_bucket"
-            ]
-          },
-          {
-            "items": [
-              "minecraft:sponge"
+              "lavasponge:hot_lavasponge"
             ]
           }
         ]
@@ -33,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "lavasponge:lavasponge"
+      "lavasponge:lavasponge_ice"
     ]
   }
 }

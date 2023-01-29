@@ -8,18 +8,19 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 @Mod.EventBusSubscriber
 public class LavaSpongeConfig {
     public static final String CATEGORY_GENERAL = "general";
-    public static final String SUBCATEGORY_WORLD_GENERATION = "worldGen";
-    public static ForgeConfigSpec.BooleanValue WORLD_GEN;
-    public static ForgeConfigSpec.IntValue VEIN_SIZE;
-    public static ForgeConfigSpec.IntValue NETHER_AMOUNT;
+    public static final String SUBCATEGORY_DROP_CHANCES = "drop_chance";
+
+    public static ForgeConfigSpec.DoubleValue PIGLIN_BRUTE_DROP_CHANCE;
+    public static ForgeConfigSpec.DoubleValue PIGLIN_DROP_CHANCE;
+    public static ForgeConfigSpec.DoubleValue ZOMBIE_PIGLIN_DROP_CHANCE;
     public static ForgeConfigSpec SERVER_CONFIG;
 
     static {
         ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
         SERVER_BUILDER.comment("General Settings").push(CATEGORY_GENERAL);
-        WORLD_GEN = SERVER_BUILDER.comment("Should generate in world").define("world_gen", true);
-        VEIN_SIZE = SERVER_BUILDER.comment("Lava Sponge Vein Size").defineInRange("vein_size", 1, 0, 50);
-        NETHER_AMOUNT = SERVER_BUILDER.comment("Nether Amount").defineInRange("nether_amount", 100, 0, 200);
+        PIGLIN_BRUTE_DROP_CHANCE = SERVER_BUILDER.comment("Piglin Brute Drop Chance").defineInRange("piglin_brute_drop_chance",0.5, 0, 1);
+        PIGLIN_DROP_CHANCE = SERVER_BUILDER.comment("Piglin Drop Chance").defineInRange("piglin_drop_chance",0.25, 0, 1);
+        ZOMBIE_PIGLIN_DROP_CHANCE = SERVER_BUILDER.comment("Zombie Piglin Drop Chance").defineInRange("zombie_piglin_drop_chance",0.25, 0, 1);
         SERVER_BUILDER.pop();
         SERVER_CONFIG = SERVER_BUILDER.build();
     }

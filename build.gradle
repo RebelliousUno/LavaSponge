@@ -1,7 +1,7 @@
 buildscript {
     ext.modVersion = '1.1.6'
-    ext.minecraftVersion = '1.18.2'
-    ext.forgeVersion = '40.0.52'
+    ext.minecraftVersion = '1.19.2'
+    ext.forgeVersion = '43.2.0'
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
         mavenCentral()
@@ -29,7 +29,7 @@ minecraft {
     // stable_#            Stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'official', version: '1.18.2'
+    mappings channel: 'official', version: "$minecraftVersion"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     
     // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
