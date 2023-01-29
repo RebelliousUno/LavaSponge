@@ -23,6 +23,7 @@ public class BlockRegister {
 
 //    private static final DeferredRegister<GlobalLootModifierSerializer<?>> LOOT = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS,LavaSponge.MODID);
 
+    public static final TagKey<Item> ICE_ITEM_TAG = ItemTags.create(new ResourceLocation(LavaSponge.MODID, "lavaspongecooler"));
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LavaSponge.MODID);
     public static final RegistryObject<LavaSpongeBlock> LAVA_SPONGE = BLOCKS.register("lavasponge", () -> new LavaSpongeBlock(BlockBehaviour.Properties.of(Material.SPONGE).strength(0.6F).sound(SoundType.METAL)));
     public static final RegistryObject<HotLavaSpongeBlock> HOT_LAVA_SPONGE = BLOCKS.register("hot_lavasponge", () -> new HotLavaSpongeBlock(BlockBehaviour.Properties.of(Material.SPONGE).strength(0.6F).sound(SoundType.METAL).lightLevel((lightValue) -> 14)));
@@ -34,9 +35,6 @@ public class BlockRegister {
             return 16000;
         }
     });
-
-    public static final TagKey<Item> ICE_ITEM_TAG = ItemTags.create(new ResourceLocation(LavaSponge.MODID, "lavaspongecooler"));
-
 
     public static void registerBlocks() {
         var bus = FMLJavaModLoadingContext.get().getModEventBus();

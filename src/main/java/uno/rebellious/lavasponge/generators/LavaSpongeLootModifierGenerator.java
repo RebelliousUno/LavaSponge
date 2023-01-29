@@ -2,13 +2,10 @@ package uno.rebellious.lavasponge.generators;
 
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.storage.loot.predicates.ConditionReference;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 import uno.rebellious.lavasponge.modifiers.LavaSpongeLootModifier;
-
-import static uno.rebellious.lavasponge.config.LavaSpongeConfig.*;
 
 public class LavaSpongeLootModifierGenerator extends GlobalLootModifierProvider {
 

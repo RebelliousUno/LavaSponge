@@ -18,9 +18,9 @@ public class LavaSpongeConfig {
     static {
         ForgeConfigSpec.Builder SERVER_BUILDER = new ForgeConfigSpec.Builder();
         SERVER_BUILDER.comment("General Settings").push(CATEGORY_GENERAL);
-        PIGLIN_BRUTE_DROP_CHANCE = SERVER_BUILDER.comment("Piglin Brute Drop Chance").defineInRange("piglin_brute_drop_chance",0.5, 0, 1);
-        PIGLIN_DROP_CHANCE = SERVER_BUILDER.comment("Piglin Drop Chance").defineInRange("piglin_drop_chance",0.25, 0, 1);
-        ZOMBIE_PIGLIN_DROP_CHANCE = SERVER_BUILDER.comment("Zombie Piglin Drop Chance").defineInRange("zombie_piglin_drop_chance",0.25, 0, 1);
+        PIGLIN_BRUTE_DROP_CHANCE = SERVER_BUILDER.comment("Piglin Brute Drop Chance").defineInRange("piglin_brute_drop_chance", 0.5, 0, 1);
+        PIGLIN_DROP_CHANCE = SERVER_BUILDER.comment("Piglin Drop Chance").defineInRange("piglin_drop_chance", 0.25, 0, 1);
+        ZOMBIE_PIGLIN_DROP_CHANCE = SERVER_BUILDER.comment("Zombie Piglin Drop Chance").defineInRange("zombie_piglin_drop_chance", 0.25, 0, 1);
         SERVER_BUILDER.pop();
         SERVER_CONFIG = SERVER_BUILDER.build();
     }

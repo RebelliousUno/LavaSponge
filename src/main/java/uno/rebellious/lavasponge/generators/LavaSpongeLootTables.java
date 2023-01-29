@@ -1,10 +1,6 @@
 package uno.rebellious.lavasponge.generators;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
-import net.minecraft.data.loot.PiglinBarterLoot;
-import net.minecraft.world.entity.monster.piglin.Piglin;
-import net.minecraft.world.level.block.Block;
 import uno.rebellious.lavasponge.blocks.BlockRegister;
 
 public class LavaSpongeLootTables extends BaseLootTableProvider {
