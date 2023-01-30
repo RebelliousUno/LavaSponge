@@ -38,22 +38,9 @@ import java.util.Map;
 From McJty Tutorials
 https://github.com/McJty/TutorialV3/blob/main/src/main/java/com/example/tutorialv3/datagen/BaseLootTableProvider.java
  */
-public abstract class BaseLootTableProvider extends LootTableProvider {
+public abstract class LootTableHelper {
 
-    private static final Logger LOGGER = LogManager.getLogger();
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-
-    protected final Map<Block, LootTable.Builder> lootTables = new HashMap<>();
-    private final DataGenerator generator;
-
-    public BaseLootTableProvider(DataGenerator dataGeneratorIn) {
-        super(dataGeneratorIn);
-        this.generator = dataGeneratorIn;
-    }
-
-    protected abstract void addTables();
-
-    protected LootTable.Builder createStandardTable(String name, Block block, BlockEntityType<?> type) {
+    public static LootTable.Builder createStandardTable(String name, Block block, BlockEntityType<?> type) {
         LootPool.Builder builder = LootPool.lootPool()
                 .name(name)
                 .setRolls(ConstantValue.exactly(1))
@@ -69,7 +56,7 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
         return LootTable.lootTable().withPool(builder);
     }
 
-    protected LootTable.Builder createSimpleTable(String name, Block block) {
+    public static LootTable.Builder createSimpleTable(String name, Block block) {
         LootPool.Builder builder = LootPool.lootPool()
                 .name(name)
                 .setRolls(ConstantValue.exactly(1))
@@ -78,7 +65,7 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
     }
 
 
-    protected LootTable.Builder createSilkTouchTable(String name, Block block, Item lootItem, float min, float max) {
+    public static LootTable.Builder createSilkTouchTable(String name, Block block, Item lootItem, float min, float max) {
         LootPool.Builder builder = LootPool.lootPool()
                 .name(name)
                 .setRolls(ConstantValue.exactly(1))
@@ -93,34 +80,5 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
                         )
                 );
         return LootTable.lootTable().withPool(builder);
-    }
-
-
-    @Override
-    public void run(CachedOutput cache) {
-        addTables();
-
-        Map<ResourceLocation, LootTable> tables = new HashMap<>();
-        for (Map.Entry<Block, LootTable.Builder> entry : lootTables.entrySet()) {
-            tables.put(entry.getKey().getLootTable(), entry.getValue().setParamSet(LootContextParamSets.BLOCK).build());
-        }
-        writeTables(cache, tables);
-    }
-
-    private void writeTables(CachedOutput cache, Map<ResourceLocation, LootTable> tables) {
-        Path outputFolder = this.generator.getOutputFolder();
-        tables.forEach((key, lootTable) -> {
-            Path path = outputFolder.resolve("data/" + key.getNamespace() + "/loot_tables/" + key.getPath() + ".json");
-            try {
-                DataProvider.saveStable(cache, LootTables.serialize(lootTable), path);
-            } catch (IOException e) {
-                LOGGER.error("Couldn't write loot table {}", path, e);
-            }
-        });
-    }
-
-    @Override
-    public String getName() {
-        return "LavaSponge LootTables";
     }
 }

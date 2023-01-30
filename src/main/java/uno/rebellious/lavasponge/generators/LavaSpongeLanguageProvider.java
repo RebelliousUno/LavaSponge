@@ -1,6 +1,7 @@
 package uno.rebellious.lavasponge.generators;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 import uno.rebellious.lavasponge.LavaSponge;
 import uno.rebellious.lavasponge.blocks.BlockRegister;
@@ -9,8 +10,8 @@ public class LavaSpongeLanguageProvider extends LanguageProvider {
 
     private static final String TAB_NAME = "lavasponge";
 
-    public LavaSpongeLanguageProvider(DataGenerator generator, String locale) {
-        super(generator, LavaSponge.MODID, locale);
+    public LavaSpongeLanguageProvider(PackOutput output, String modid, String locale) {
+        super(output, modid, locale);
     }
 
 

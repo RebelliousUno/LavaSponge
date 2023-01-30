@@ -16,7 +16,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import uno.rebellious.lavasponge.LavaSponge;
-import uno.rebellious.lavasponge.config.Config;
 
 
 public class BlockRegister {
@@ -28,12 +27,17 @@ public class BlockRegister {
     public static final RegistryObject<LavaSpongeBlock> LAVA_SPONGE = BLOCKS.register("lavasponge", () -> new LavaSpongeBlock(BlockBehaviour.Properties.of(Material.SPONGE).strength(0.6F).sound(SoundType.METAL)));
     public static final RegistryObject<HotLavaSpongeBlock> HOT_LAVA_SPONGE = BLOCKS.register("hot_lavasponge", () -> new HotLavaSpongeBlock(BlockBehaviour.Properties.of(Material.SPONGE).strength(0.6F).sound(SoundType.METAL).lightLevel((lightValue) -> 14)));
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LavaSponge.MODID);
-    public static final RegistryObject<Item> LAVA_SPONGE_ITEM = ITEMS.register("lavasponge", () -> new BlockItem(LAVA_SPONGE.get(), new Item.Properties().tab(Config.ITEM_GROUP)));
-    public static final RegistryObject<Item> HOT_LAVA_SPONGE_ITEM = ITEMS.register("hot_lavasponge", () -> new BlockItem(HOT_LAVA_SPONGE.get(), new Item.Properties().tab(Config.ITEM_GROUP).fireResistant().stacksTo(1).craftRemainder(LAVA_SPONGE_ITEM.get())) {
+    public static final RegistryObject<Item> LAVA_SPONGE_ITEM = ITEMS.register("lavasponge", () -> new BlockItem(LAVA_SPONGE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> HOT_LAVA_SPONGE_ITEM = ITEMS.register("hot_lavasponge", () -> new BlockItem(HOT_LAVA_SPONGE.get(), new Item.Properties().fireResistant().stacksTo(1).craftRemainder(LAVA_SPONGE_ITEM.get())) {
         @Override
         public int getBurnTime(ItemStack stack, RecipeType recipeType) {
             return 16000;
         }
+
+//        @Override
+//        public void onDestroyed(ItemEntity itemEntity, DamageSource damageSource) {
+//            System.out.println("Item Destroyed");
+//        }
     });
 
     public static void registerBlocks() {
