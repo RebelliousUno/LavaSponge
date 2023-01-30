@@ -29,15 +29,16 @@ public class LavaSpongeRecipes extends RecipeProvider {
                 .group("lavasponge")
                 .unlockedBy("lavasponge", InventoryChangeTrigger.TriggerInstance.hasItems(Items.LAVA_BUCKET, Items.SPONGE))
                 .save(consumer);
-        ShapedRecipeBuilder.shaped(BlockRegister.LAVA_SPONGE.get())
-                .pattern("XXX")
-                .pattern("XSX")
-                .pattern("XXX")
-                .define('X', ICE_ITEM_TAG)
-                .define('S', BlockRegister.HOT_LAVA_SPONGE.get())
-                .group("lavasponge")
-                .unlockedBy("lavasponge", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegister.HOT_LAVA_SPONGE_ITEM.get()))
-                .save(consumer, new ResourceLocation("lavasponge", "lavasponge_ice"));
+        //TODO: Fix Dupe Bug
+//        ShapedRecipeBuilder.shaped(BlockRegister.LAVA_SPONGE.get())
+//                .pattern("XXX")
+//                .pattern("XSX")
+//                .pattern("XXX")
+//                .define('X', ICE_ITEM_TAG)
+//                .define('S', BlockRegister.HOT_LAVA_SPONGE.get())
+//                .group("lavasponge")
+//                .unlockedBy("lavasponge", InventoryChangeTrigger.TriggerInstance.hasItems(BlockRegister.HOT_LAVA_SPONGE_ITEM.get()))
+//                .save(consumer, new ResourceLocation("lavasponge", "lavasponge_ice"));
 
     }
 }
