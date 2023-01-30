@@ -17,7 +17,7 @@ public class LavaSpongeLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add("itemGroup." + TAB_NAME + ".item_group", "LavaSponge");
+        add("item_group." + TAB_NAME + ".item_group", "LavaSponge");
         add(BlockRegister.HOT_LAVA_SPONGE.get(), "Hot Lava Sponge");
         add(BlockRegister.LAVA_SPONGE.get(), "Lava Sponge");
         add(BlockRegister.HOT_LAVA_SPONGE.get().getDescriptionId() + ".description", "Surround with 5 Ice Blocks, or use as a fuel in a furnace to cool down.");
