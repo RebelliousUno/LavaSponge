@@ -27,7 +27,7 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(LavaSpongeLootTables::new, LootContextParamSets.BLOCK))));
         LavaSpongeBlockTags blockTags = new LavaSpongeBlockTags(output, lookupProvider, LavaSponge.MODID, event.getExistingFileHelper());
         generator.addProvider(event.includeServer(), blockTags);
-        generator.addProvider(event.includeServer(), new LavaSpongeItemTags(output, lookupProvider, blockTags, LavaSponge.MODID, event.getExistingFileHelper()));
+        generator.addProvider(event.includeServer(), new LavaSpongeItemTags(output, lookupProvider, blockTags.contentsGetter(), LavaSponge.MODID, event.getExistingFileHelper()));
         generator.addProvider(event.includeServer(), new LavaSpongeLootModifierGenerator(output, LavaSponge.MODID));
 
         generator.addProvider(event.includeClient(), new LavaSpongeBlockStates(output, LavaSponge.MODID, event.getExistingFileHelper()));
