@@ -12,5 +12,6 @@
       "name": "hot_lavasponge",
       "rolls": 1.0
     }
-  ]
+  ],
+  "random_sequence": "lavasponge:hot_lavasponge"
 }
