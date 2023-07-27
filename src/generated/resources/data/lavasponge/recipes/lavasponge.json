@@ -17,5 +17,6 @@
   ],
   "result": {
     "item": "lavasponge:lavasponge"
-  }
+  },
+  "show_notification": true
 }
