@@ -1,5 +1,5 @@
 buildscript {
-    ext.modVersion = '1.1.7'
+    ext.modVersion = '1.7.1'
     ext.minecraftVersion = '1.19.3'
     ext.forgeVersion = '44.1.0'
     repositories {
