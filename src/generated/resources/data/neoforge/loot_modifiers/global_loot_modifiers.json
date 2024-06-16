@@ -1,0 +1,8 @@
+{
+  "entries": [
+    "lavasponge:zombie_piglin_modifier",
+    "lavasponge:piglin_modifier",
+    "lavasponge:piglin_brute_modifier"
+  ],
+  "replace": false
+}
