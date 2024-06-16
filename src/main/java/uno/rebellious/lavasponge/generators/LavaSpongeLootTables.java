@@ -1,5 +1,6 @@
 package uno.rebellious.lavasponge.generators;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraftforge.registries.ForgeRegistries;
 import uno.rebellious.lavasponge.LavaSponge;
@@ -8,6 +9,10 @@ import uno.rebellious.lavasponge.blocks.BlockRegister;
 import java.util.Map;
 import java.util.stream.Collectors;
 public class LavaSpongeLootTables extends VanillaBlockLoot {
+
+    public LavaSpongeLootTables(HolderLookup.Provider provider) {
+        super(provider);
+    }
 
     @Override
     protected void generate() {

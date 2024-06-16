@@ -1,28 +1,26 @@
 package uno.rebellious.lavasponge.generators;
 
+
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import uno.rebellious.lavasponge.blocks.BlockRegister;
 
-import java.util.function.Consumer;
-
-import static uno.rebellious.lavasponge.blocks.BlockRegister.ICE_ITEM_TAG;
+import java.util.concurrent.CompletableFuture;
 
 public class LavaSpongeRecipes extends RecipeProvider {
 
-    public LavaSpongeRecipes(PackOutput output) {
-        super(output);
+    public LavaSpongeRecipes(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider);
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(RecipeOutput recipeOutput) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegister.LAVA_SPONGE.get())
                 .pattern(" X ")
                 .pattern("XSX")
@@ -31,7 +29,7 @@ public class LavaSpongeRecipes extends RecipeProvider {
                 .define('S', Items.SPONGE)
                 .group("lavasponge")
                 .unlockedBy("lavasponge", InventoryChangeTrigger.TriggerInstance.hasItems(Items.LAVA_BUCKET, Items.SPONGE))
-                .save(consumer);
+                .save(recipeOutput);
 
         //TODO: Fix Dupe Bug with
 //        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockRegister.LAVA_SPONGE.get())

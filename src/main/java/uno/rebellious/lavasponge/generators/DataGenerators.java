@@ -23,12 +23,12 @@ public class DataGenerators {
         PackOutput output = generator.getPackOutput();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new LavaSpongeRecipes(output));
-        generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(LavaSpongeLootTables::new, LootContextParamSets.BLOCK))));
+        generator.addProvider(event.includeServer(), new LavaSpongeRecipes(output, lookupProvider));
+        generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(), List.of(new LootTableProvider.SubProviderEntry(LavaSpongeLootTables::new, LootContextParamSets.BLOCK)), lookupProvider));
         LavaSpongeBlockTags blockTags = new LavaSpongeBlockTags(output, lookupProvider, LavaSponge.MODID, event.getExistingFileHelper());
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new LavaSpongeItemTags(output, lookupProvider, blockTags.contentsGetter(), LavaSponge.MODID, event.getExistingFileHelper()));
-        generator.addProvider(event.includeServer(), new LavaSpongeLootModifierGenerator(output, LavaSponge.MODID));
+        generator.addProvider(event.includeServer(), new LavaSpongeLootModifierGenerator(output, lookupProvider, LavaSponge.MODID));
 
         generator.addProvider(event.includeClient(), new LavaSpongeBlockStates(output, LavaSponge.MODID, event.getExistingFileHelper()));
         generator.addProvider(event.includeClient(), new LavaSpongeItemModels(output, LavaSponge.MODID, event.getExistingFileHelper()));

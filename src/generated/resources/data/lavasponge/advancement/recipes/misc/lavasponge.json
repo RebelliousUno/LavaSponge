@@ -11,14 +11,10 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:lava_bucket"
-            ]
+            "items": "minecraft:lava_bucket"
           },
           {
-            "items": [
-              "minecraft:sponge"
-            ]
+            "items": "minecraft:sponge"
           }
         ]
       },
@@ -27,14 +23,13 @@
   },
   "requirements": [
     [
-      "lavasponge",
-      "has_the_recipe"
+      "has_the_recipe",
+      "lavasponge"
     ]
   ],
   "rewards": {
     "recipes": [
       "lavasponge:lavasponge"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

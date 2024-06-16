@@ -2,6 +2,7 @@ package uno.rebellious.lavasponge.modifiers;
 
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.util.RandomSource;
@@ -17,15 +18,15 @@ import java.util.function.Supplier;
 import static uno.rebellious.lavasponge.blocks.BlockRegister.LAVA_SPONGE;
 
 public class LavaSpongeLootModifier extends LootModifier {
-    public static final Supplier<Codec<LavaSpongeLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.create(inst -> codecStart(inst)
+
+    public static final Supplier<MapCodec<LavaSpongeLootModifier>> CODEC = Suppliers.memoize(() -> RecordCodecBuilder.mapCodec(inst -> codecStart(inst)
             .and(Codec.DOUBLE.fieldOf("chance").forGetter(m -> m.chance))
             .apply(inst, LavaSpongeLootModifier::new)));
-    double chance;
+    private final double chance;
 
     public LavaSpongeLootModifier(LootItemCondition[] conditionsIn, double chance) {
         super(conditionsIn);
-        this.chance = chance > 1 ? 1 : chance;
-        if (this.chance < 0) this.chance = 0;
+        this.chance = chance > 1 ? 1 : chance < 0 ? 0 : chance;
     }
 
     @NotNull
@@ -37,7 +38,7 @@ public class LavaSpongeLootModifier extends LootModifier {
     }
 
     @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
+    public MapCodec<? extends IGlobalLootModifier> codec() {
         return CODEC.get();
     }
 }

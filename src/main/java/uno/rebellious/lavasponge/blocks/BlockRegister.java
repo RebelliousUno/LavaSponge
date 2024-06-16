@@ -20,7 +20,7 @@ import uno.rebellious.lavasponge.LavaSponge;
 
 public class BlockRegister {
 
-    public static final TagKey<Item> ICE_ITEM_TAG = ItemTags.create(new ResourceLocation(LavaSponge.MODID, "lavaspongecooler"));
+    public static final TagKey<Item> ICE_ITEM_TAG = ItemTags.create(ResourceLocation.bySeparator(LavaSponge.MODID + ":lavaspongecooler", ':'));
     private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LavaSponge.MODID);
     public static final RegistryObject<LavaSpongeBlock> LAVA_SPONGE = BLOCKS.register("lavasponge", () -> new LavaSpongeBlock(BlockBehaviour.Properties.of().strength(0.6F).sound(SoundType.METAL)));
     public static final RegistryObject<HotLavaSpongeBlock> HOT_LAVA_SPONGE = BLOCKS.register("hot_lavasponge", () -> new HotLavaSpongeBlock(BlockBehaviour.Properties.of().strength(0.6F).sound(SoundType.METAL).lightLevel((lightValue) -> 14)));
