@@ -1,9 +1,7 @@
 package uno.rebellious.lavasponge.generators;
 
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
-import uno.rebellious.lavasponge.LavaSponge;
 import uno.rebellious.lavasponge.blocks.BlockRegister;
 
 public class LavaSpongeLanguageProvider extends LanguageProvider {

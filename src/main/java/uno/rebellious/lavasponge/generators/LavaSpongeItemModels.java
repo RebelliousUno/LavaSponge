@@ -1,10 +1,8 @@
 package uno.rebellious.lavasponge.generators;
 
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import uno.rebellious.lavasponge.LavaSponge;
 import uno.rebellious.lavasponge.blocks.BlockRegister;
 
 public class LavaSpongeItemModels extends ItemModelProvider {
